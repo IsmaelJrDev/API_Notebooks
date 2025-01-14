@@ -3,7 +3,7 @@ from nbconvert import HTMLExporter
 import nbformat
 import os
 
-app = Flask(__name__, template_folder='view', static_folder='view/css')
+app = Flask(__name__, template_folder='view', static_folder='view')
 
 # Ruta que lista todos los notebooks disponibles
 @app.route('/')

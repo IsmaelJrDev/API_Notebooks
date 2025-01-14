@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seleccionar Notebook</title>
-    <link rel="stylesheet" href="css/style_index.css">  <!-- Vincula el CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_index.css') }}">
 </head>
 <body>
-    <h1>Selecciona un Notebook para Ver</h1>  <!-- Título principal -->
-
-    <!-- Contenedor de botones -->
+    <div id="particles-js"></div>
+    <h1>Selecciona un Notebook para Ver</h1>
+    <p>Esta API cuenta con documentos realizados en la asignatura de Simulación.</p>
     <div class="btn-container">
-        {% for notebook in notebooks %}  <!-- Itera sobre los notebooks pasados por Flask -->
+        {% for notebook in notebooks %}
         <button onclick="window.location.href='{{ url_for('view_notebook', notebook_name=notebook) }}'">
-            {{ notebook }}  <!-- Nombre del notebook -->
+            {{ notebook }}
         </button>
         {% endfor %}
     </div>
+    <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+    <script>
+        particlesJS.load('particles-js', '{{ url_for("static", filename="js/particlesjs-config.json") }}', function() {
+            console.log('Partículas cargadas correctamente.');
+        });
+    </script>
 </body>
 </html>

@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">  <!-- Define la codificación de caracteres -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Hace la página responsiva -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style_notebook.css') }}">  <!-- Vincula el CSS de la página -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_notebook.css') }}">
     <title>{{ notebook_name }} - Notebook</title>  <!-- Título dinámico con el nombre del notebook -->
 </head>
 <body>
-    <h1>Contenido del Notebook: {{ notebook_name }}</h1>  <!-- Título principal con el nombre del notebook -->
     
     <!-- Área donde se mostrará el contenido del notebook (celdas en HTML) -->
     <div id="notebook">
         {{ notebook_html | safe }}  <!-- Inserta el contenido del notebook en HTML -->
     </div>
 
-    <!-- Enlace para volver a la lista de notebooks -->
-    <a href="{{ url_for('index') }}">Volver a la lista de notebooks</a>
 </body>
 </html>
