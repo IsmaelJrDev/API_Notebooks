@@ -13,7 +13,6 @@ def index():
     notebooks = sorted([f.replace('.ipynb', '') for f in os.listdir(NOTEBOOKS_DIR) if f.endswith('.ipynb')])
     return render_template('index.html', notebooks=notebooks)
 
-# Ruta para ver un notebook específico
 @app.route('/notebook/<notebook_name>')
 def view_notebook(notebook_name):
     notebook_path = os.path.join('notebooks', notebook_name + '.ipynb')
@@ -39,12 +38,78 @@ def view_notebook(notebook_name):
         complete_html = f"""
         <html>
             <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
                 <link rel="stylesheet" type="text/css" href="{resources['output_files']['stylesheet']}">
+                <style>
+                    pre {{
+                        background-color: #f5f5f5;
+                        padding: 10px;
+                        border-radius: 5px;
+                        overflow-x: auto;
+                    }}
+
+                    code {{
+                        font-family: Consolas, Monaco, monospace;
+                        font-size: 1rem;
+                    }}
+
+                    body {{
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        display: flex;
+                        flex-direction: column;
+                        min-height: 100vh;  /* Asegura que el contenido ocupe toda la altura de la página */
+                    }}
+
+                    .container {{
+                        flex-grow: 1; /* Hace que el contenedor principal ocupe el espacio disponible */
+                        padding: 20px;
+                    }}
+
+                    footer {{
+                        background-color: #333;
+                        color: white;
+                        text-align: center;
+                        padding: 10px 0;
+                        position: relative;
+                        width: 100%;
+                        bottom: 0;
+                        margin-top: auto;
+                    }}
+
+                    footer p {{
+                        margin: 0;
+                        font-size: 14px;
+                    }}
+
+                    .back-button {{
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #007bff;
+                        color: white;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        margin-bottom: 20px;
+                    }}
+
+                    .back-button:hover {{
+                        background-color: #0056b3;
+                    }}
+                </style>
             </head>
             <body>
-                {body}
+                <div class="container">
+                    <a href="/" class="back-button">Regresar</a>
+                    {body}
+                </div>
+                <footer>
+                    <p class="copy"> ISIC - 3501 &copy; 2025 - Ismael</p>
+                </footer>
             </body>
         </html>
+
         """
 
         return complete_html
