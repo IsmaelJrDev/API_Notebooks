@@ -9,14 +9,20 @@
 <body>
     <div id="particles-js"></div>
     <h1>Selecciona un Notebook para Ver</h1>
-    <p>Esta API cuenta con documentos realizados en la asignatura de Simulación.</p>
-    <div class="btn-container">
-        {% for notebook in notebooks %}
-        <button onclick="window.location.href='{{ url_for('view_notebook', notebook_name=notebook) }}'">
-            {{ notebook }}
-        </button>
-        {% endfor %}
+    <p id="p_main">Esta API cuenta con documentos realizados en la asignatura de Simulación de la Facultad de Ingenieria Sistemas Computacionales.</p>
+    <p id="p_second">En esta API podras tener acceso a los Notebooks realizados con Machine Learning y modelos Matemáticos.</p>
+    
+    <!-- Caja con Scroll -->
+    <div class="list-container">
+        <div class="btn-container">
+            {% for notebook in notebooks %}
+                <button onclick="window.location.href='{{ url_for('view_notebook', notebook_name=notebook) }}'">
+                    {{ notebook }}
+                </button>
+            {% endfor %}
+        </div>
     </div>
+
     <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
     <script>
         particlesJS.load('particles-js', '{{ url_for("static", filename="js/particlesjs-config.json") }}', function() {
@@ -24,4 +30,11 @@
         });
     </script>
 </body>
+
+<footer>
+    <div class="contenedor">
+        <p class="copy"> ISIC - 3501 &copy; 2025 - Ismael</p>
+    </div>
+</footer>
+
 </html>
