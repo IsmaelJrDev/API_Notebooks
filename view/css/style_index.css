@@ -1,12 +1,26 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
     text-align: center;
     background: #000;
+    position: relative;
+    overflow-x: hidden;
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    color: white;
+    top: 10px; /* Un pequeño margen desde la parte superior */
+    left: 0;
+    width: 100%;
+    background-color: rgb(0, 0, 0); /* Fondo oscuro y translúcido */
+    padding: 10px;
 }
 
 #particles-js {
@@ -15,19 +29,42 @@ h1 {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1; /* Envía el fondo detrás del contenido */
+    z-index: -1;
 }
 
+#p_main {
+    color: white;
+    padding-top: 30px;
+}
 
-// Estilos de botones
+#p_second {
+    color: white;
+    padding-top: 10px;
+}
+
+.list-container {
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%; /* Ajusta el ancho a un porcentaje */
+    max-height: 70vh; /* Limita la altura máxima de la caja */
+    overflow-y: auto; /* Agrega scroll vertical cuando el contenido excede el tamaño */
+    list-style-type: none;
+    margin: 40px 0 20px 0; /* Deja espacio para el título fijo */
+    display: flex;
+    flex-direction: column; /* Los botones se organizarán en columna */
+    gap: 15px; /* Espacio entre los botones */
+}
+
 .btn-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px; /* Espacio entre los botones */
+    width: 100%; /* Asegura que los botones ocupen todo el ancho disponible */
 }
 
 .btn-container button {
-    margin: 10px;
     padding: 15px 30px;
     font-size: 16px;
     cursor: pointer;
@@ -36,15 +73,54 @@ h1 {
     color: white;
     border-radius: 5px;
     transition: background-color 0.3s;
+    min-width: 150px; /* Ancho mínimo para los botones */
+    max-width: 300px; /* Limita el tamaño máximo de los botones */
+    flex: 1 1 calc(33.33% - 20px); /* Los botones ocupan el 33% del espacio en pantallas grandes */
+    box-sizing: border-box;
 }
 
 .btn-container button:hover {
     background-color: #0056b3;
 }
 
-footer .contenedor{
+footer .contenedor {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding-bottom: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+footer .copy {
+    color: white;
+    margin-top: 20px;
+}
+
+/* Media query para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 25px; /* Ajustamos el tamaño del título */
+        padding: 8px; /* Ajustamos el padding */
+    }
+
+    .list-container {
+        width: 95%; /* Ancho del contenedor casi completo */
+        max-height: 60vh; /* Limita un poco más la altura */
+    }
+
+    .btn-container {
+        flex-direction: column; /* Los botones en una sola columna */
+    }
+
+    .btn-container button {
+        width: 100%; /* Los botones ocupan todo el ancho del contenedor */
+        max-width: none; /* Quitamos el límite de tamaño máximo */
+        min-width: 0; /* El ancho mínimo ya no se aplica */
+    }
+
+    #p_main, #p_second {
+        padding: 10px 15px; /* Reduce ligeramente el espacio horizontal */
+        text-align: center; /* Texto alineado a la izquierda para móviles */
+    }
 }
