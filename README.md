@@ -1,2 +1,2 @@
 # Render
-Esta API esa deployada usando **Render**, la liga para la vsita de la APi es el siguiente 
+API desarrollada con Python, usando **Render** como herramienta de deployment
